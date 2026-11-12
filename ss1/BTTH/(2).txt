@@ -1,0 +1,30 @@
+# Prompt cho Phần 1: Bản chất LLM hoạt động thế nào?
+```
+[C - Context]: Bạn là Chuyên gia Trí tuệ Nhân tạo và là Giảng viên hướng dẫn kỹ năng số cho sinh viên công nghệ.
+[R - Request]: Viết nội dung giải thích cốt lõi về bản chất hoạt động của LLM (Large Language Model) dưới dạng "Cách AI đoán từ".
+[E - Explanation]: Giải thích đơn giản, dễ hiểu cho tân sinh viên CNTT, tránh dùng thuật toán toán học quá phức tạp nhưng phải đảm bảo tính chính xác khoa học (đề cập đến xác suất thống kê chuỗi token và cơ chế chú ý Attention).
+[A - Action]: 1. Định nghĩa LLM không phải cơ sở dữ liệu vạn năng; 2. Giải thích cơ chế dự đoán từ tiếp theo dựa trên xác suất; 3. Nêu rõ hệ quả vì sao AI có thể nói sai sự thật một cách rất tự tin.
+[T - Tone]: Thân thiện, khoa học, dễ tiếp thu, trực quan.
+[E - Extras]: Trình bày dưới dạng các mục nhỏ (Bullet points) có tiêu đề đậm.
+```
+Prompt cho Phần 2: 3 cách nhận diện ảo giác của AI
+```
+[C - Context]: Bạn là Chuyên gia Cố vấn An toàn thông tin và Kỹ nghệ Prompt.
+[R - Request]: Liệt kê và hướng dẫn 3 phương pháp thực tế giúp tân sinh viên nhận diện hiện tượng "Ảo giác" (Hallucination) khi lập trình cùng AI.
+[E - Explanation]: Các phương pháp đưa ra phải có tính ứng dụng cao đối với việc học code (ví dụ: kiểm tra hàm ảo, thư viện không có thực, lỗi logic cú pháp).
+[A - Action]: Trình bày 3 cách nhận diện rõ ràng: 
+1. Kiểm tra chéo tài liệu chính thức (Official Documentation); 
+2. Chạy thử nghiệm thực tế (Sandbox/Compiler check); 
+3. Kỹ thuật "Prompt thách thức/bẻ lái" để kiểm chứng độ tin cậy.
+[T - Tone]: Cảnh báo chuyên nghiệp, thực tế, mang tính định hướng cao.
+[E - Extras]: Trình bày theo cấu trúc đánh số từ 1 đến 3, mỗi mục có ví dụ code hoặc tình huống cụ thể.
+```
+Prompt cho Phần 3: Cấu trúc Prompt mẫu tối ưu bằng khung CREATE
+```
+[C - Context]: Bạn là Senior Software Engineer có kinh nghiệm huấn luyện AI Prompting cho lập trình viên.
+[R - Request]: Thiết kế 2 Prompt mẫu hoàn chỉnh bằng khung CREATE để hỗ trợ sinh viên học lập trình (Mẫu 1: Debug lỗi code; Mẫu 2: Giải thích thuật toán khó).
+[E - Explanation]: Các prompt phải tuân thủ nghiêm ngặt chuẩn cấu trúc CREATE (Context, Request, Explanation, Action, Tone, Extras) và ứng dụng các kỹ thuật nâng cao như Delimiters, Negative Prompting.
+[A - Action]: Trình bày chi tiết từng thành phần của khung CREATE cho 2 mẫu prompt trên kèm theo phần giải thích ngắn gọn lý do vì sao mẫu prompt đó giúp tối ưu hóa kết quả nhận được từ AI.
+[T - Tone]: Rõ ràng, chuẩn mực, mang tính thực chiến cao.
+[E - Extras]: Trình bày bằng các khối mã (Code blocks) Markdown để sinh viên dễ dàng copy và áp dụng ngay.
+```

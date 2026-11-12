@@ -1,0 +1,38 @@
+KẾT HỢP CoT & RAG PHÂN TÍCH BÁO CÁO TÀI CHÍNH MARTX
+1. Phân tích sự kết hợp CoT + RAG trong xử lý số liệu tài chính
+Việc kết hợp đồng thời hai kỹ thuật RAG Grounding (Truy xuất và neo giữ ngữ cảnh) và Chain-of-Thought (CoT) (Chuỗi suy luận tuần tự) mang lại giải pháp triệt tiêu hoàn toàn ảo giác số liệu của AI nhờ cơ chế bổ trợ lẫn nhau:
+- RAG Grounding (Khóa nguồn dữ liệu): Cung cấp cho AI một không gian dữ liệu chính xác, đáng tin cậy bên ngoài (như bảng số liệu tài chính, công thức chuẩn). Kỹ thuật này giúp AI không phải "tự bịa" hay đoán mò số liệu từ trí nhớ tổng quát, đảm bảo mọi dữ liệu đầu vào đều có căn cứ thực tế từ tài liệu gốc.
+- Chain-of-Thought (CoT - Bắt buộc suy luận từng bước): Bản thân AI đôi khi có dữ liệu chính xác nhưng lại nhảy cóc qua các bước tính toán do bản chất dự đoán xác suất từ (dẫn đến tính nhầm doanh thu tài chính hoặc sai sót số học). CoT buộc AI phải phân rã quá trình xử lý thành các bước rõ ràng (Trích xuất $\rightarrow$ Thay số $\rightarrow$ Tính toán $\rightarrow$ Kết luận), ép mô hình phải thực hiện từng phép tính logic hệt như con người kiểm tra sổ sách.
+- Hiệu quả hiệp lực: RAG giải quyết bài toán "Lấy đúng số liệu ở đâu?", trong khi CoT giải quyết bài toán "Tính toán thế nào cho đúng logic?". Sự kết hợp này giúp loại bỏ hoàn toàn các lỗi nhầm lẫn và tình trạng tự ý làm tròn số của mô hình.
+2. Thiết kế Master Prompt Phân tích Tài chính hoàn chỉnh (4 Khối)
+Dưới đây là cấu trúc Master Prompt hoàn chỉnh được thiết kế theo đúng chuẩn yêu cầu:
+```
+[KHỐI 1: ROLE - VAI TRÒ]
+Bạn là một Chuyên gia Phân tích Tài chính cao cấp tại tập đoàn MartX với hơn 10 năm kinh nghiệm kiểm toán và phân tích báo cáo kết quả kinh doanh. Bạn cực kỳ cẩn trọng, chính xác và không bao giờ phỏng đoán số liệu.
+
+[KHỐI 2: CONTEXT RAG - DỮ LIỆU VÀ CÔNG THỨC CHUẨN]
+Dựa hoàn toàn vào bảng số liệu tài chính Quý 3 và các công thức chuẩn được cung cấp bên trong thẻ dữ liệu dưới đây:
+
+<financial_data>
+- Doanh thu thuần (Net Revenue): 10.000.000.000 VNĐ
+- Giá vốn hàng bán (COGS): 6.000.000.000 VNĐ
+- Tổng chi phí vận hành (Operating Expenses): 2.500.000.000 VNĐ
+- Doanh thu tài chính (Financial Income): 500.000.000 VNĐ (Lưu ý: Không cộng khoản này vào Doanh thu thuần khi tính Lợi nhuận gộp).
+- Lợi nhuận gộp (Gross Profit) = Doanh thu thuần - Giá vốn hàng bán
+- Lợi nhuận gộp biên (Gross Profit Margin) = (Lợi nhuận gộp / Doanh thu thuần) * 100
+- Lợi nhuận ròng (Net Profit) = Lợi nhuận gộp - Tổng chi phí vận hành (+ Doanh thu tài chính nếu có, tùy quy định hạch toán)
+- Lợi nhuận ròng biên (Net Profit Margin) = (Lợi nhuận ròng / Doanh thu thuần) * 100
+</financial_data>
+
+[KHỐI 3: INSTRUCTION CoT - HƯỚNG DẪN SUY LUẬN TỪNG BƯỚC]
+Hãy tính toán chính xác chỉ số [Gross Profit Margin] và [Net Profit Margin]. Bạn BẮT BUỘC phải trình bày bài làm qua 4 bước tuần tự sau:
+- Bước 1 (Trích xuất số thô): Liệt kê chính xác các con số từ thẻ dữ liệu <financial_data> được dùng để tính toán.
+- Bước 2 (Thay số): Đặt các số liệu vừa trích xuất vào đúng vị trí trong công thức chuẩn.
+- Bước 3 (Tính toán chi tiết): Trình bày rõ ràng từng phép tính cộng, trừ, nhân, chia từng bước một.
+- Bước 4 (Kết luận): Đưa ra con số tỷ lệ phần trăm cuối cùng của từng chỉ số.
+
+[KHỐI 4: NEGATIVE CONSTRAINT - RÀNG BUỘC PHỦ ĐỊNH]
+- TUYỆT ĐỐI KHÔNG tự ý làm tròn số giữa chừng ở các bước tính toán trung gian; hãy giữ nguyên số thập phân chính xác đến 4 chữ số (nếu có) và chỉ làm tròn đến 2 chữ số ở bước kết luận cuối cùng.
+- TUYỆT ĐỐI KHÔNG sử dụng bất kỳ con số, dữ liệu hoặc giả định nào nằm ngoài bảng dữ liệu đã cung cấp trong thẻ <financial_data>.
+- KHÔNG viết lời chào hay giải thích dài dòng ngoài lề cấu trúc 4 bước CoT.
+```

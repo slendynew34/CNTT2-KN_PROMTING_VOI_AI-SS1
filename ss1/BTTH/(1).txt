@@ -1,0 +1,16 @@
+```
+[BƯỚC 1: Xây dựng nội dung Phần 1] 
+-> Yêu cầu AI giải thích bản chất LLM dự đoán từ qua xác suất & cơ chế Attention.
+       │
+       ▼ (Đầu ra Phần 1)
+[BƯỚC 2: Xây dựng nội dung Phần 2] 
+-> Yêu cầu AI liệt kê 3 cách thực tế để nhận diện hiện tượng "Ảo giác" (Hallucination).
+       │
+       ▼ (Đầu ra Phần 2)
+[BƯỚC 3: Xây dựng nội dung Phần 3] 
+-> Yêu cầu AI thiết kế 3 cấu trúc Prompt chuẩn khung CREATE áp dụng cho học lập trình.
+       │
+       ▼ (Đầu ra Phần 3)
+[BƯỚC 4: Tổng hợp & Hoàn thiện Cuốn cẩm nang] 
+-> Kết hợp 3 phần trên thành một cuốn cẩm nang ngắn gọn, mạch lạc kèm lời khuyên tổng kết.
+```

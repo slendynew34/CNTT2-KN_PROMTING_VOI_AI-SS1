@@ -1,0 +1,43 @@
+Áp dụng AI Policy & Nguyên tắc Human-in-the-loop trong Đánh giá Nhân sự
+PHẦN 1: Phân tích 2 vi phạm nghiêm trọng của Trưởng phòng Nhân sự
+Hành động tự động hóa hoàn toàn quyết định sa thải dựa trên kết quả thô từ AI của Trưởng phòng Nhân sự tại MartX đã vi phạm trực tiếp các tiêu chuẩn về Đạo đức nghề nghiệp và Chính sách AI Policy:
+
+Vi phạm nguyên tắc Chịu trách nhiệm giải trình & Thiếu cơ chế kiểm duyệt con người (Absence of Human-in-the-loop):
+
+Phân tích: Trưởng phòng Nhân sự đã giao phó toàn bộ quyền lực ra quyết định nhân sự mang tính sống còn cho AI (đối tượng chỉ đóng vai trò trợ lý thống kê - Decision Support). Khi xảy ra khiếu nại, người này lại chối bỏ trách nhiệm và đổ lỗi hoàn toàn cho khách quan thuật toán ("Do AI phân tích khách quan từ số liệu..."). Trong chính sách AI Policy, AI không có tư cách pháp lý hay tư cách chủ thể để chịu trách nhiệm; con người (người ký quyết định) phải chịu 100% trách nhiệm pháp lý và đạo đức.
+
+Vi phạm nguyên tắc Công Bằng, Minh Bạch và Ngăn ngừa Định kiến Thuật toán (AI Bias & Fairness):
+
+Phân tích: Dữ liệu KPI và lịch sử chấm công thô thường ẩn chứa các yếu tố thiên vị hoặc thiếu ngữ cảnh định tính (ví dụ: nhân sự bị ốm đau dài ngày, nhân sự được giao dự án khó dẫn đến KPI thấp tạm thời...). Việc ra lệnh cho AI "tìm 3 nhân viên kém nhất để sa thải ngay" mà không qua bước thẩm định định tính chuyên sâu đã biến AI thành công cụ đưa ra các phán xét định lượng thiên lệch, vi phạm nghiêm trọng quyền lợi chính đáng và đạo đức nghề nghiệp quản trị nhân sự.
+
+PHẦN 2: Thiết kế Sơ đồ luồng 3 bước (Quy trình phối hợp an toàn cho MartX)
+Để đảm bảo tuân thủ chuẩn an toàn và loại bỏ rủi ro pháp lý, MartX cần áp dụng quy trình phối hợp chuẩn theo mô hình Human-in-the-loop gồm 3 bước sau:
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   BƯỚC 1: NHẬP DỮ LIỆU                      │
+│ - Thu thập dữ liệu KPI, chấm công, báo cáo định tính.       │
+│ - Chuẩn hóa dữ liệu, ẩn danh tính (nếu cần) & lọc nhiễu.    │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│                 BƯỚC 2: AI ĐỀ XUẤT (ANALYTICS)              │
+│ - AI phân tích số liệu dựa trên Prompt chuẩn cấu trúc.      │
+│ - AI xuất ra bản danh sách đề xuất sơ bộ kèm theo căn cứ    │
+│   thống kê và các cảnh báo rủi ro (Decision Support).       │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│         BƯỚC 3: HUMAN-IN-THE-LOOP THẨM ĐỊNH & KÝ QUYẾT ĐỊNH │
+│ - Hội đồng/Chuyên gia nhân sự thẩm định lại định tính       │
+│   (phỏng vấn trực tiếp, xem xét hoàn cảnh ngoại cảnh).      │
+│ - Ra quyết định cuối cùng và chịu trách nhiệm pháp lý.      │
+└─────────────────────────────────────────────────────────────┘
+```
+Chi tiết vận hành từng bước trong quy trình:
+Bước 1 (Nhập dữ liệu): Bộ phận Nhân sự chuẩn bị tập dữ liệu đánh giá một cách minh bạch, công bằng và tuân thủ các quy định bảo mật thông tin nội bộ của công ty.
+
+Bước 2 (AI đề xuất): Sử dụng LLM như một công cụ hỗ trợ xử lý dữ liệu lớn để sàng lọc ra nhóm nhân sự cần lưu ý hoặc có nguy cơ hoàn thành kém, tuyệt đối không dùng để ra phán quyết sa thải tự động.
+
+Bước 3 (Human-in-the-loop Thẩm định & Ký quyết định): Con người trực tiếp can thiệp, đối thoại, xem xét bối cảnh thực tế của từng nhân viên từ kết quả đề xuất của AI. Trưởng phòng Nhân sự hoặc Hội đồng kỷ luật sẽ là chủ thể chính thức đứng tên ký duyệt quyết định và chịu hoàn toàn trách nhiệm trước tổ chức.

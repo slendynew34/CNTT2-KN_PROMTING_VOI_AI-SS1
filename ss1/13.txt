@@ -1,0 +1,76 @@
+# Xây dựng Khung Quản trị AI Doanh nghiệp (AI Governance Framework)
+
+## **PHẦN 1: THIẾT KẾ KHUNG QUẢN TRỊ 3 TRỤ CỘT**
+
+Để cân bằng giữa tốc độ đổi mới sáng tạo và việc kiểm soát rủi ro cho 2.000 nhân sự trên 50 chi nhánh, MartX thiết lập Khung Quản trị AI gồm 3 trụ cột cốt lõi:
+
+### **1. Trụ cột 1: Security & Data Privacy (Bảo mật & Quyền riêng tư dữ liệu)**
+
+Ứng dụng cơ chế **Phân cấp Dữ liệu 3 màu** để kiểm soát nghiêm ngặt các loại dữ liệu được phép và không được phép đưa vào các hệ thống LLM:
+
+-    **Màu Đỏ - Vùng cấm tuyệt đối (Forbidden Data):**
+    
+    -   _Nội dung:_ Thông tin định danh cá nhân của khách hàng (PII như CCCD, số điện thoại, email, thẻ ngân hàng), tài chính nội bộ, bí mật kinh doanh, chiến lược giá của 50 chi nhánh, mã nguồn hệ thống.
+        
+    -   _Quy chế hành chính:_ Nghiêm cấm sao chép, dán hoặc tải lên bất kỳ công cụ AI công cộng nào. Vi phạm sẽ bị xử lý kỷ luật lao động.
+        
+-    **Màu Vàng - Vùng che mờ / Định danh giả (Masked / Sanitized Data):**
+    
+    -   _Nội dung:_ Dữ liệu báo cáo kinh doanh chung, phản hồi khách hàng có chứa tên riêng hoặc chi tiết nhạy cảm.
+        
+    -   _Quy chế hành chính:_ Nhân viên **bắt buộc** phải dùng công cụ che mờ, ẩn danh tính (Data Masking) hoặc viết lại dữ liệu dưới dạng số liệu thống kê chung trước khi đưa vào AI để phân tích.
+        
+-    **Màu Xanh - Vùng được phép sử dụng tự do (Public / Internal Safe Data):**
+    
+    -   _Nội dung:_ Tài liệu hướng dẫn quy trình vận hành chung (SOP), mẫu email CSKH chuẩn, kiến thức công nghệ công khai, tài liệu đào tạo nội bộ không bảo mật.
+        
+    -   _Quy chế hành chính:_ Nhân viên được khuyến khích sử dụng thoải mái để tối ưu hóa hiệu suất công việc hàng ngày.
+        
+
+### **2. Trụ cột 2: Token & Cost Governance (Quản trị Token & Chi phí API)**
+
+Kiểm soát tình trạng bùng nổ chi phí API khi quy mô lên tới 2.000 nhân sự thông qua các giải pháp kỹ thuật và quy trình:
+
+-   **Hạn mức Token Quota per User (Giới hạn Token định mức):**
+    
+    -   Mỗi nhân viên được cấp một hạn mức (Quota) cố định theo ngày/tháng trên hệ thống AI nội bộ của MartX (Ví dụ: 50.000 tokens/ngày).
+        
+    -   Hệ thống tự động ngắt kết nối hoặc cảnh báo khi nhân viên vượt ngưỡng, ngăn chặn việc sử dụng lãng phí hoặc lạm dụng AI cho mục đích cá nhân.
+        
+-   **Quy trình Chat Summary bắt buộc (Cơ chế nén ngữ cảnh):**
+    
+    -   Đối với các phiên làm việc dài vượt quá 10 lượt hỏi đáp, hệ thống sẽ yêu cầu chạy lệnh tóm tắt (_Chat Summary_) để cắt bỏ lịch sử rác, chỉ lưu lại các thông tin cốt lõi (Key Context) cho phiên tiếp theo nhằm tiết kiệm tối đa dung lượng Context Window và giảm thiểu chi phí xử lý token đầu vào.
+        
+
+### **3. Trụ cột 3: Accuracy & Accountability (Độ chính xác & Trách nhiệm giải trình)**
+
+Khắc phục triệt để tình trạng nhân viên tin tưởng tuyệt đối vào AI gây ra sai sót vận hành:
+
+-   **Quy chuẩn RAG Grounding bắt buộc (Neo giữ dữ liệu nguồn):**
+    
+    -   Mọi câu trả lời của trợ lý AI nội bộ phục vụ cho nghiệp vụ kinh doanh, chính sách kho bãi, quy chế nhân sự **bắt buộc** phải được kết nối với cơ sở dữ liệu nội bộ qua phương pháp RAG.
+        
+    -   AI phải trích dẫn kèm theo đường dẫn hoặc mã tài liệu gốc (Source Citation). Nếu không có nguồn xác thực, câu trả lời sẽ bị từ chối.
+        
+-   **Chế tài Human-in-the-loop (Con người kiểm duyệt cuối cùng):**
+    
+    -   AI chỉ đóng vai trò hỗ trợ tham vấn (_Decision Support_). Mọi quyết định trọng yếu ảnh hưởng đến khách hàng, hợp đồng đối tác, hay kỷ luật nhân sự **bắt buộc** phải có chữ ký và sự thẩm định trực tiếp của cấp quản lý (Human). Quản lý trực tiếp là người chịu trách nhiệm cao nhất trước Ban Giám đốc cho các quyết định sử dụng kết quả từ AI.
+        
+
+## **PHẦN 2: XÂY DỰNG AI READINESS SCORECARD (BẢNG ĐÁNH GIÁ MỨC ĐỘ SẴN SÀNG AI)**
+
+Trước khi một phòng ban (hoặc chi nhánh) tại MartX được cấp quyền tích hợp và sử dụng API AI nội bộ, bộ phận đó phải vượt qua Bảng đánh giá Mức độ Sẵn sàng AI gồm **5 tiêu chí chuẩn hóa** (Thang điểm từ 1 đến 5 cho mỗi tiêu chí; tổng điểm tối đa là 25 điểm; điểm đạt tối thiểu để cấp quyền là **≥\ge≥ 20 điểm**):
+
+|STT|Tiêu chí đánh giá (Criteria)|Nội dung mô tả chi tiết kiểm định|Điểm chuẩn (1 - 5)|Trạng thái phòng ban|
+|-|-|-|-|-|
+|**1**|**Nhận thức & Tuân thủ Bảo mật (Security Awareness)**|100% nhân sự trong phòng ban đã hoàn thành khóa đào tạo về Phân cấp Dữ liệu 3 màu (Đỏ, Vàng, Xanh) và cam kết không rò rỉ PII.|_(Tự điền điểm: /5)_|[ ] Đạt
+|||||[ ] Cần cải thiện|
+|**2**|**Năng lực Kỹ nghệ Prompt (Prompt Literacy)**|Nhân viên nắm vững các cấu trúc Prompt cơ bản (như khung CREATE, Delimiters, Negative Prompting) để tránh đưa câu lệnh mơ hồ gây ra ảo giác.|_(Tự điền điểm: /5)_|[ ] Đạt
+|||||[ ] Cần cải thiện|
+|**3**|**Quy trình Kiểm duyệt Nhân sự (Human-in-the-loop)**|Phòng ban đã thiết lập sẵn quy trình nội bộ đảm bảo mọi đầu ra từ AI đều phải qua một nhân sự kiểm tra, đối soát thực tế trước khi ban hành.|_(Tự điền điểm: /5)_|[ ] Đạt|
+|||||[ ] Cần cải thiện|
+|**4**|**Hạ tầng & Nguồn dữ liệu sạch (Data Readiness)**|Phòng ban số hóa đầy đủ các tài liệu quy trình, cẩm nang nghiệp vụ nội bộ để sẵn sàng tích hợp vào hệ thống RAG Grounding.|_(Tự điền điểm: /5)_|[ ] Đạt|
+|||||[ ] Cần cải thiện|
+|**5**|**Cơ chế Giám sát Chi phí & Hạn mức (Cost Control)**|Trưởng bộ phận cam kết theo dõi hạn mức Token Quota định kỳ của đội ngũ, tránh lãng phí tài nguyên hệ thống API của tập đoàn.|_(Tự điền điểm: /5)_|[ ] Đạt|
+|||||[ ] Cần cải thiện|
+|**TỔNG**|**Điểm Đánh Giá Tổng Thể (Total Score)**|**Yêu cầu tối thiểu đạt từ 20/25 điểm mới được cấp quyền API chính thức.**|**... / 25**|**[ ] ĐẠT / [ ] CHƯA ĐẠT**|
